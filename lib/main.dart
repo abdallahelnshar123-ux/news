@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/home_screen/home_screen.dart';
 import 'package:news/utils/app_routes.dart';
+import 'package:news/utils/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false ,
+      debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.homeRouteName,
-      routes: {AppRoutes.homeRouteName: (context) => HomeScreen()},
+      routes: {
+        AppRoutes.homeRouteName: (context) => HomeScreen(),
+      },
+      theme: AppTheme.lightTheme,
+      themeMode: ThemeMode.dark,
+      darkTheme: AppTheme.darkTheme,
     );
   }
 }

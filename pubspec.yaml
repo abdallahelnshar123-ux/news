@@ -37,6 +37,8 @@ dependencies:
   google_fonts: ^8.0.1
   flutter_native_splash: ^2.4.7
   http: ^1.6.0
+  cached_network_image: ^3.4.1
+  timeago_flutter: ^3.7.0
 
 dev_dependencies:
   flutter_test:

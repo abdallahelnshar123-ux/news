@@ -5,4 +5,6 @@ class AppColors {
   static const whiteColor = Color(0xffffffff);
   static const transparentBlackColor = Color.fromRGBO(0, 0, 0, 0.5);
   static const grayColor = Color(0xffA0A0A0);
+  static const transparentColor = Colors.transparent;
+
 }
