@@ -1,49 +1,55 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:news/home_screen/categories_widget/categories_widget.dart';
 import 'package:news/home_screen/category_details/category_details.dart';
-import 'package:news/home_screen/widget/category_item.dart';
+import 'package:news/home_screen/drawer/home_drawer.dart';
 import 'package:news/model/category.dart';
-import 'package:news/utils/screen_size.dart';
+import 'package:news/utils/app_colors.dart';
 
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
-class HomeScreen extends StatelessWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   List<Category> categoryList = [];
 
-  HomeScreen({super.key});
+  Category? selectedCategory;
 
   @override
   Widget build(BuildContext context) {
-    categoryList = Category.getCategoryList();
+    categoryList = Category.getCategoryList(context);
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.width * 0.04),
-        child: Column(
-          spacing: context.height*0.02,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Good Morning',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            FittedBox(
-              child: Text(
-                'Here is Some News For You',
-                style: Theme.of(context).textTheme.displayLarge,
-              ),
-            ),
-            Expanded(
-              child: CategoryDetails(),
-
-              // ListView.separated(
-              //   itemBuilder: (context, index) =>
-              //       CategoryItem(index: index, category: categoryList[index]),
-              //   separatorBuilder: (context, index) => SizedBox(height: context.height*0.02,),
-              //   itemCount: categoryList.length,
-              // ),
-            ),
-          ],
+      drawer: Drawer(
+        backgroundColor: AppColors.blackColor,
+        child: HomeDrawer(onTap: onGoHomeTap),
+      ),
+      appBar: AppBar(
+        title: Text(
+          selectedCategory == null
+              ? context.tr('home')
+              : context.tr(selectedCategory!.id),
         ),
       ),
+      body: selectedCategory == null
+          ? CategoriesWidget(
+              categoryList: categoryList,
+              onCategoryItemClick: onCategoryItemClick,
+            )
+          : CategoryDetails(category: selectedCategory!),
     );
+  }
+
+  void onCategoryItemClick(Category newSelectedCategory) {
+    selectedCategory = newSelectedCategory;
+    setState(() {});
+  }
+
+  void onGoHomeTap() {
+    selectedCategory = null;
+    Navigator.pop(context);
+    setState(() {});
   }
 }

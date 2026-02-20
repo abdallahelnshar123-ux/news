@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:news/utils/App_Colors.dart';
+import 'package:news/provider/app_theme_provider.dart';
+import 'package:news/utils/app_colors.dart';
 import 'package:news/utils/screen_size.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:timeago_flutter/timeago_flutter.dart' as timeago;
@@ -19,7 +21,7 @@ class NewsItem extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.whiteColor, width: 1),
+        border: Border.all(color: context.isLight ?AppColors.blackColor: AppColors.whiteColor, width: 1),
       ),
       child: Column(
         spacing: context.height * 0.02,
@@ -47,7 +49,7 @@ class NewsItem extends StatelessWidget {
                 ),
               ),
               Text(
-                publishTime(),
+                publishTime(context),
                 // news.publishedAt ?? '',
                 style: Theme.of(context).textTheme.labelSmall,
               ),
@@ -58,14 +60,14 @@ class NewsItem extends StatelessWidget {
     );
   }
 
-  String publishTime() {
+  String publishTime(BuildContext context) {
     DateTime parsedDate = DateTime.parse(
       news.publishedAt ?? '${DateTime.now()}',
     );
-    DateTime dateDiff = DateTime.now().subtract(
-      Duration(milliseconds: parsedDate.millisecondsSinceEpoch),
-    );
-    return timeago.format(dateDiff);
+    // DateTime dateDiff = DateTime.now().subtract(
+    //   Duration(milliseconds: parsedDate.millisecondsSinceEpoch),
+    // );
+    return timeago.format(parsedDate ,locale:  context.locale.countryCode );
     // timeago.format(DateTime.now().subtract(Duration(milliseconds: DateTime.parse(news.publishedAt ?? '${DateTime.now()}').millisecondsSinceEpoch))
   }
 }

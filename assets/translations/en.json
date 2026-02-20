@@ -1,0 +1,25 @@
+{
+  "home": "Home",
+  "general": "General",
+  "business": "Business",
+  "entertainment": "Entertainment",
+  "health": "Health",
+  "technology": "Technology",
+  "sports": "Sports",
+  "science": "Science",
+  "good_morning": "Good Morning",
+  "here_is_Some_news_for_you": "Here is Some News For You",
+  "view_all": "View All",
+  "go_home": "Go To Home",
+  "theme": "Theme",
+  "language": "Language",
+  "dark": "Dark",
+  "light": "Light",
+  "english": "English",
+  "arabic": "Arabic",
+  "view_full_article": "View Full Article",
+  "chars": "chars",
+  "web_viewer": "Web Viewer",
+  "no_news_from_this_source": "No News From This Source"
+
+}

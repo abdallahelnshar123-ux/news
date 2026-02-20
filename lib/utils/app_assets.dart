@@ -1,4 +1,6 @@
 class AppAssets {
+
+  /// images ================================================================
   static const String businessDarkImage = 'assets/images/business_dark.png';
   static const String businessLightImage = 'assets/images/business_light.png';
   static const String entertainmentDarkImage =
@@ -16,4 +18,10 @@ class AppAssets {
   static const String technologyDarkImage = 'assets/images/technology_dark.png';
   static const String technologyLightImage =
       'assets/images/technology_light.png';
+
+  /// icons ==================================================================
+  static const String homeIcon = 'assets/icons/home_icon.svg';
+  static const String themeIcon = 'assets/icons/theme_icon.svg';
+  static const String languageIcon = 'assets/icons/language_icon.svg';
+
 }

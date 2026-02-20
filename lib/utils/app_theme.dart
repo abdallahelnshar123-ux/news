@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:news/utils/App_Colors.dart';
+import 'package:news/utils/app_colors.dart';
 import 'package:news/utils/app_styles.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
+
     progressIndicatorTheme: ProgressIndicatorThemeData(
         color: AppColors.blackColor
     ),
@@ -26,7 +27,13 @@ class AppTheme {
       titleSmall: AppStyles.medium14black,
       labelSmall: AppStyles.medium12gray,
         displayLarge: AppStyles.medium24black,
-        displayMedium: AppStyles.medium24white
+        displayMedium: AppStyles.medium24white,
+      titleLarge: AppStyles.medium16black,
+        bodyLarge: AppStyles.bold24black,
+      headlineSmall: AppStyles.medium14white,
+
+
+
     ),
   );
   static final ThemeData darkTheme = ThemeData(
@@ -50,7 +57,11 @@ class AppTheme {
       titleSmall: AppStyles.medium14white,
       labelSmall: AppStyles.medium12gray,
       displayLarge: AppStyles.medium24white,
-      displayMedium: AppStyles.medium24black
+      displayMedium: AppStyles.medium24black,
+      titleLarge: AppStyles.medium16white,
+      bodyLarge: AppStyles.bold24black,
+      headlineSmall: AppStyles.medium14black,
+
     ),
   );
 }
