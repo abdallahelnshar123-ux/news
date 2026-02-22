@@ -9,7 +9,7 @@ class AppTheme {
         color: AppColors.blackColor
     ),
     appBarTheme: AppBarTheme(
-      toolbarHeight: 72,
+      toolbarHeight: 80,
       centerTitle: true,
       titleTextStyle: AppStyles.medium20black,
       foregroundColor: AppColors.blackColor ,
@@ -41,7 +41,7 @@ class AppTheme {
       color: AppColors.whiteColor
     ),
     appBarTheme: AppBarTheme(
-      toolbarHeight: 72,
+      toolbarHeight: 80,
       centerTitle: true,
       titleTextStyle: AppStyles.medium20white,
       foregroundColor: AppColors.whiteColor ,

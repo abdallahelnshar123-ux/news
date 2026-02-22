@@ -59,6 +59,7 @@ class BottomSheetNewsWidget extends StatelessWidget {
                     AppRoutes.webviewRouteName,
                     arguments: selectedNews.url,
                   );
+                  // Navigator.pop(context);
                 },
                 backgroundColor: context.isLight
                     ? AppColors.whiteColor

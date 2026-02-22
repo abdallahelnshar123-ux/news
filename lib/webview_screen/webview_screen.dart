@@ -12,17 +12,12 @@ class WebViewScreen extends StatefulWidget {
 }
 
 class _WebViewScreenState extends State<WebViewScreen> {
-  late WebViewController webViewController;
+  late final WebViewController webViewController;
   var loadingPerPercentage = 0;
 
   @override
   void initState() {
     super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    String newsUrl = ModalRoute.of(context)!.settings.arguments as String;
     webViewController = WebViewController()
       ..setNavigationDelegate(
         NavigationDelegate(
@@ -42,8 +37,14 @@ class _WebViewScreenState extends State<WebViewScreen> {
             });
           },
         ),
-      )
-      ..loadRequest(Uri.parse(newsUrl));
+      );
+  }
+
+  @override
+  void didChangeDependencies() {
+    String newsUrl = ModalRoute.of(context)!.settings.arguments as String;
+
+    webViewController.loadRequest(Uri.parse(newsUrl));
 
     super.didChangeDependencies();
   }
@@ -65,7 +66,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
           WebViewWidget(controller: webViewController),
           loadingPerPercentage < 100
               ? LinearProgressIndicator(
-            backgroundColor: AppColors.black50OpacityColor,
+                  backgroundColor: AppColors.black50OpacityColor,
                   color: context.isLight
                       ? AppColors.blackColor
                       : AppColors.whiteColor,

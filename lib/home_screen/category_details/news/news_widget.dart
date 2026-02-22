@@ -53,26 +53,34 @@ class _NewsWidgetState extends State<NewsWidget> {
 
         var newsList = snapshot.data!.articles!;
         return newsList.isEmpty
-            ? Center(
-                child: Text(
-                  context.tr('no_news_from_this_source'),
-                  style: Theme.of(context).textTheme.titleLarge,
+            ? Container(
+          alignment: Alignment.center,
+          width: double.infinity,
+          padding: EdgeInsets.only(top: context.height *0.35),
+              child: Text(
+                context.tr('no_news_from_this_source'),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            )
+            : Expanded(
+              child: ListView.separated(
+
+                        // shrinkWrap: true,
+                  // physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.all(context.width * 0.03),
+                  separatorBuilder: (context, index) =>
+                      SizedBox(height: context.width * 0.04),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        onNewsClick(newsList[index]);
+                      },
+                      child: NewsItem(news: newsList[index]),
+                    );
+                  },
+                  itemCount: newsList.length,
                 ),
-              )
-            : ListView.separated(
-                padding: EdgeInsets.all(context.width * 0.03),
-                separatorBuilder: (context, index) =>
-                    SizedBox(height: context.width * 0.04),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      onNewsClick(newsList[index]);
-                    },
-                    child: NewsItem(news: newsList[index]),
-                  );
-                },
-                itemCount: newsList.length,
-              );
+            );
       },
     );
   }
