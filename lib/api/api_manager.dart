@@ -58,4 +58,48 @@ static Future<NewsResponse> getNewsBySourceId(String sourceId  , int pageNum)asy
 
 
 }
+
+
+  static Future<SourceResponse>getAllSources() async{
+    Uri url = Uri.https(ApiConstants.baseUrl, EndPoints.sourceApi, {
+      'apiKey': ApiConstants.apiKey,
+
+    });
+    try {
+      var response = await http.get(url);
+      var responseBody = response.body;
+      var json = jsonDecode(responseBody);
+      return SourceResponse.fromJson(json);
+    }
+    catch (e){
+      rethrow ;
+
+
+    }
+  }
+  static Future<NewsResponse> getNewsBySearch(String sourceId  , int pageNum , String searchKeyword)async{
+    Uri url = Uri.https(ApiConstants.baseUrl , EndPoints.newsApi , {
+      "apiKey" : ApiConstants.apiKey ,
+      "sources" : sourceId ,
+      "pageSize" : '10' ,
+      "page" : '$pageNum' ,
+      "q" : searchKeyword ,
+
+    });
+    try {
+      var response = await http.get(url);
+      var responseBody = response.body;
+      var json = jsonDecode(responseBody);
+      return NewsResponse.fromJson(json);
+    }
+    catch (e){
+
+      rethrow;
+    }
+
+
+
+  }
+
+
 }

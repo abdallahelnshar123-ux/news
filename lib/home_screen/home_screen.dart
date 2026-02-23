@@ -6,6 +6,7 @@ import 'package:news/global_widgets/custom_text_field.dart';
 import 'package:news/home_screen/categories_widget/categories_widget.dart';
 import 'package:news/home_screen/category_details/category_details.dart';
 import 'package:news/home_screen/drawer/home_drawer.dart';
+import 'package:news/home_screen/search_result_widget/search_result_widget.dart';
 import 'package:news/model/category.dart';
 import 'package:news/provider/app_theme_provider.dart';
 import 'package:news/utils/app_assets.dart';
@@ -22,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Category> categoryList = [];
   bool search = false;
+  String keyWord = '';
 
   Category? selectedCategory;
 
@@ -40,6 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyActions: !search,
         title: search
             ? CustomTextField(
+          onChanged: (text){
+            keyWord = text;
+            setState(() {
+
+            });
+
+
+          },
                 dataStyle: Theme.of(context).textTheme.titleLarge,
                 errorBorderColor: Colors.red,
                 generalBorderColor: context.isLight
@@ -90,12 +100,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
         actionsPadding: EdgeInsets.symmetric(horizontal: context.width * 0.02),
       ),
-      body: selectedCategory == null
-          ? CategoriesWidget(
-              categoryList: categoryList,
-              onCategoryItemClick: onCategoryItemClick,
-            )
-          : CategoryDetails(category: selectedCategory!),
+      body: showBodyWidget(),
+
+      // selectedCategory == null
+      //     ? CategoriesWidget(
+      //         categoryList: categoryList,
+      //         onCategoryItemClick: onCategoryItemClick,
+      //       )
+      //     : CategoryDetails(category: selectedCategory!),
     );
   }
 
@@ -108,5 +120,18 @@ class _HomeScreenState extends State<HomeScreen> {
     selectedCategory = null;
     Navigator.pop(context);
     setState(() {});
+  }
+
+  Widget showBodyWidget() {
+    if (search) {
+      return SearchResultWidget(keyWord: keyWord,);
+    }
+    if (selectedCategory == null) {
+      return CategoriesWidget(
+        categoryList: categoryList,
+        onCategoryItemClick: onCategoryItemClick,
+      );
+    }
+    return CategoryDetails(category: selectedCategory!) ;
   }
 }
