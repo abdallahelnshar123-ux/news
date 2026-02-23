@@ -20,6 +20,8 @@
   "view_full_article": "عرض المقال كاملا",
   "chars": "أحرف",
   "web_viewer": "مستعرض الويب",
-  "no_news_from_this_source": "لا أخبار من هذا المصدر"
+  "no_news_from_this_source": "لا أخبار من هذا المصدر",
+  "next_page": "الصفحة التالية",
+  "previous_page": "الصفحة السابقة"
 
 }

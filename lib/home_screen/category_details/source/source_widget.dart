@@ -44,6 +44,7 @@ class _SourceWidgetState extends State<SourceWidget> {
                 .toList(),
           ),
           NewsWidget(source: widget.sourcesList[selectedIndex]),
+
         ],
       ),
     );

@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyActions: !search,
         title: search
             ? CustomTextField(
-          dataStyle: Theme.of(context).textTheme.titleLarge,
+                dataStyle: Theme.of(context).textTheme.titleLarge,
                 errorBorderColor: Colors.red,
                 generalBorderColor: context.isLight
                     ? AppColors.blackColor

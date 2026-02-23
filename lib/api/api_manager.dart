@@ -36,12 +36,12 @@ rethrow ;
 
    */
 
-static Future<NewsResponse> getNewsBySourceId(String sourceId)async{
+static Future<NewsResponse> getNewsBySourceId(String sourceId  , int pageNum)async{
  Uri url = Uri.https(ApiConstants.baseUrl , EndPoints.newsApi , {
    "apiKey" : ApiConstants.apiKey ,
    "sources" : sourceId ,
    "pageSize" : '10' ,
-   "page" : '2' ,
+   "page" : '$pageNum' ,
 
  });
  try {
