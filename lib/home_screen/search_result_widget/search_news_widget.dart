@@ -11,24 +11,34 @@ import '../../../global_widgets/main_error_widget.dart';
 import '../../../global_widgets/main_loading_widget.dart';
 
 import '../../../utils/app_Colors.dart';
-import 'news_item.dart';
+import '../category_details/news/news_item.dart';
 
-class NewsWidget extends StatefulWidget {
-  const NewsWidget({super.key, required this.source});
+class SearchNewsWidget extends StatefulWidget {
+  const SearchNewsWidget({
+    super.key,
+    required this.source,
+    required this.keyWord,
+  });
 
   final Source source;
+  final String keyWord;
 
   @override
-  State<NewsWidget> createState() => _NewsWidgetState();
+  State<SearchNewsWidget> createState() => _SearchNewsWidgetState();
 }
 
-class _NewsWidgetState extends State<NewsWidget> {
+class _SearchNewsWidgetState extends State<SearchNewsWidget> {
   int pageNum = 1;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<NewsResponse>(
-      future: ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum),
+      future: ApiManager.getNewsBySearch(
+        widget.source.id ?? '',
+        pageNum,
+        widget.keyWord,
+      ),
+      // ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return MainLoadingWidget();
@@ -37,7 +47,12 @@ class _NewsWidgetState extends State<NewsWidget> {
           // todo :
           return MainErrorWidget(
             onPressed: () {
-              ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
+              ApiManager.getNewsBySearch(
+                widget.source.id ?? '',
+                pageNum,
+                widget.keyWord,
+              );
+              // ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
               setState(() {});
             },
             errorMessage: 'Something went Wrong ',
@@ -47,7 +62,12 @@ class _NewsWidgetState extends State<NewsWidget> {
         if (snapshot.data?.status != 'ok') {
           return MainErrorWidget(
             onPressed: () {
-              ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
+              ApiManager.getNewsBySearch(
+                widget.source.id ?? '',
+                pageNum,
+                widget.keyWord,
+              );
+              // ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
               setState(() {});
             },
             errorMessage: snapshot.data!.message!,
@@ -103,7 +123,7 @@ class _NewsWidgetState extends State<NewsWidget> {
                           text: 'next_page',
                         ),
                         PageNavigationWidget(
-                          visibility: pageNum>1,
+                          visibility: pageNum > 1,
                           pageNum: pageNum,
                           onPressed: () {
                             if (pageNum > 1) {

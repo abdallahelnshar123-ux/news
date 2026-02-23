@@ -3,19 +3,19 @@ import 'package:news/home_screen/category_details/source/source_tab_widget.dart'
 import 'package:news/home_screen/search_result_widget/search_news_widget.dart';
 import 'package:news/model/source_response.dart';
 
-import '../news/news_widget.dart';
 
 
-class SourceWidget extends StatefulWidget {
+class SearchSourceWidget extends StatefulWidget {
   final List<Source> sourcesList;
+  final String keyWord ;
 
-  const SourceWidget({super.key, required this.sourcesList});
+  const SearchSourceWidget({super.key, required this.sourcesList , required this.keyWord});
 
   @override
-  State<SourceWidget> createState() => _SourceWidgetState();
+  State<SearchSourceWidget> createState() => _SearchSourceWidgetState();
 }
 
-class _SourceWidgetState extends State<SourceWidget> {
+class _SearchSourceWidgetState extends State<SearchSourceWidget> {
   int selectedIndex = 0;
 
   @override
@@ -37,14 +37,14 @@ class _SourceWidgetState extends State<SourceWidget> {
             tabs: widget.sourcesList
                 .map(
                   (source) => SourceTab(
-                    source: source,
-                    isSelected:
-                        selectedIndex == widget.sourcesList.indexOf(source),
-                  ),
-                )
+                source: source,
+                isSelected:
+                selectedIndex == widget.sourcesList.indexOf(source),
+              ),
+            )
                 .toList(),
           ),
-          NewsWidget(source: widget.sourcesList[selectedIndex]),
+          SearchNewsWidget(source: widget.sourcesList[selectedIndex] , keyWord: widget.keyWord,),
 
         ],
       ),

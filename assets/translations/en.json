@@ -20,6 +20,8 @@
   "view_full_article": "View Full Article",
   "chars": "chars",
   "web_viewer": "Web Viewer",
-  "no_news_from_this_source": "No News From This Source"
+  "no_news_from_this_source": "No News From This Source",
+  "next_page": "Next Page",
+  "previous_page": "Previous Page"
 
 }
