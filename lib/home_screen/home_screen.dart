@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news/global_widgets/custom_text_field.dart';
 import 'package:news/home_screen/categories_widget/categories_widget.dart';
@@ -42,14 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyActions: !search,
         title: search
             ? CustomTextField(
-          onChanged: (text){
-            keyWord = text;
-            setState(() {
-
-            });
-
-
-          },
+                onChanged: (text) {
+                  keyWord = text;
+                  setState(() {});
+                },
                 dataStyle: Theme.of(context).textTheme.titleLarge,
                 errorBorderColor: Colors.red,
                 generalBorderColor: context.isLight
@@ -124,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget showBodyWidget() {
     if (search) {
-      return SearchResultWidget(keyWord: keyWord,);
+      return SearchResultWidget(keyWord: keyWord);
     }
     if (selectedCategory == null) {
       return CategoriesWidget(
@@ -132,6 +127,6 @@ class _HomeScreenState extends State<HomeScreen> {
         onCategoryItemClick: onCategoryItemClick,
       );
     }
-    return CategoryDetails(category: selectedCategory!) ;
+    return CategoryDetails(category: selectedCategory!);
   }
 }
