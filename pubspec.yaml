@@ -45,6 +45,8 @@ dependencies:
   easy_localization: ^3.0.8
   readmore: ^3.0.0
   webview_flutter: ^4.13.1
+  dio: ^5.9.2
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_test:

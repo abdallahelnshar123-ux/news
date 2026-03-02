@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/api/api_manager.dart';
+import 'package:news/api/dio/dio_manager.dart';
 import 'package:news/home_screen/category_details/source/source_widget.dart';
 import 'package:news/model/category.dart';
 import 'package:news/model/source_response.dart';
@@ -21,7 +22,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceResponse>(
-      future: ApiManager.getSources(widget.category.id),
+      future: DioManager.getSources(widget.category.id),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return MainLoadingWidget();
@@ -30,7 +31,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           // todo :
           return MainErrorWidget(
             onPressed: () {
-              ApiManager.getSources(widget.category.id);
+              DioManager.getSources(widget.category.id);
               setState(() {});
             },
             errorMessage: 'Something went Wrong ',
@@ -40,7 +41,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           if (snapshot.data?.status != 'ok') {
             return MainErrorWidget(
               onPressed: () {
-                ApiManager.getSources(widget.category.id);
+                DioManager.getSources(widget.category.id);
                 setState(() {});
               },
               errorMessage: snapshot.data!.message!,

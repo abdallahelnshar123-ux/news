@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:news/api/api_manager.dart';
 import 'package:news/home_screen/category_details/news/bottom_sheet_news_widget.dart';
 import 'package:news/home_screen/category_details/news/page_navigation_widget.dart';
 import 'package:news/model/news_response.dart';
 import 'package:news/model/source_response.dart';
 import 'package:news/utils/screen_size.dart';
 
+import '../../../api/dio/dio_manager.dart';
 import '../../../global_widgets/main_error_widget.dart';
 import '../../../global_widgets/main_loading_widget.dart';
 
@@ -28,7 +28,7 @@ class _NewsWidgetState extends State<NewsWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<NewsResponse>(
-      future: ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum),
+      future: DioManager.getNewsBySourceId(widget.source.id ?? '', pageNum),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return MainLoadingWidget();
@@ -37,7 +37,7 @@ class _NewsWidgetState extends State<NewsWidget> {
           // todo :
           return MainErrorWidget(
             onPressed: () {
-              ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
+              DioManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
               setState(() {});
             },
             errorMessage: 'Something went Wrong ',
@@ -47,7 +47,7 @@ class _NewsWidgetState extends State<NewsWidget> {
         if (snapshot.data?.status != 'ok') {
           return MainErrorWidget(
             onPressed: () {
-              ApiManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
+              DioManager.getNewsBySourceId(widget.source.id ?? '', pageNum);
               setState(() {});
             },
             errorMessage: snapshot.data!.message!,
