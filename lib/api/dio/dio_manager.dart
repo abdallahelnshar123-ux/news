@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:news/api/dio/dio_interceptor.dart';
 import 'package:news/api/end_points.dart';
 import 'package:news/model/news_response.dart';
 import 'package:news/model/source_response.dart';
@@ -11,9 +12,10 @@ class DioManager {
       Dio(
           BaseOptions(
             baseUrl: 'https://newsapi.org',
-            queryParameters: {'apiKey': ApiConstants.apiKey},
+            // queryParameters: {'apiKey': ApiConstants.apiKey},
           ),
         )
+        ..interceptors.add(DioInterceptor1())
         ..interceptors.add(
           PrettyDioLogger(
             requestHeader: true,
