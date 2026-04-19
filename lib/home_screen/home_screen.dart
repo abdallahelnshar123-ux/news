@@ -96,13 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
         actionsPadding: EdgeInsets.symmetric(horizontal: context.width * 0.02),
       ),
       body: showBodyWidget(),
-
-      // selectedCategory == null
-      //     ? CategoriesWidget(
-      //         categoryList: categoryList,
-      //         onCategoryItemClick: onCategoryItemClick,
-      //       )
-      //     : CategoryDetails(category: selectedCategory!),
     );
   }
 

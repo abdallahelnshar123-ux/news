@@ -103,7 +103,7 @@ class _NewsWidgetState extends State<NewsWidget> {
                           text: 'next_page',
                         ),
                         PageNavigationWidget(
-                          visibility: pageNum>1,
+                          visibility: pageNum > 1,
                           pageNum: pageNum,
                           onPressed: () {
                             if (pageNum > 1) {
