@@ -15,6 +15,7 @@ class NewsWidget extends StatefulWidget {
   const NewsWidget({super.key, required this.source});
 
   final Source source;
+
   @override
   State<NewsWidget> createState() => _NewsWidgetState();
 }

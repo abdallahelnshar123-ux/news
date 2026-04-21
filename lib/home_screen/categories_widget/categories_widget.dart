@@ -26,7 +26,10 @@ class CategoriesWidget extends StatelessWidget {
         spacing: context.height * 0.015,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(context.tr('good_morning'), style: Theme.of(context).textTheme.displayLarge),
+          Text(
+            context.tr('good_morning'),
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
           FittedBox(
             alignment: AlignmentDirectional.centerStart,
             fit: BoxFit.scaleDown,
@@ -36,7 +39,7 @@ class CategoriesWidget extends StatelessWidget {
             ),
           ),
           ListView.separated(
-            padding: EdgeInsets.symmetric(vertical: context.height*0.02),
+            padding: EdgeInsets.symmetric(vertical: context.height * 0.02),
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => GestureDetector(
