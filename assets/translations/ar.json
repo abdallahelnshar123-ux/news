@@ -23,7 +23,9 @@
   "no_news_from_this_source": "لا أخبار من هذا المصدر",
   "next_page": "الصفحة التالية",
   "previous_page": "الصفحة السابقة",
-  "no_news_sources_found": "لا يوجد مصادر اخبار "
+  "no_news_sources_found": "لا يوجد مصادر اخبار ",
+  "no_news_found": "لم يتم العثور علي اخبار"
+
 
 
 }

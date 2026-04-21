@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/home_screen/category_details/source/source_tab_widget.dart';
-import 'package:news/home_screen/search_result_widget/search_news_widget.dart';
+import 'package:news/home_screen/search/search_news_widget.dart';
 import 'package:news/model/source_response.dart';
 
 
@@ -44,7 +44,7 @@ class _SearchSourceWidgetState extends State<SearchSourceWidget> {
             )
                 .toList(),
           ),
-          SearchNewsWidget(source: widget.sourcesList[selectedIndex] , keyWord: widget.keyWord,),
+          // SearchNewsWidget(source: widget.sourcesList[selectedIndex] , keyWord: widget.keyWord,),
 
         ],
       ),

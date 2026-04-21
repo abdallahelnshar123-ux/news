@@ -77,10 +77,10 @@ static Future<NewsResponse> getNewsBySourceId(String sourceId  , int pageNum)asy
 
     }
   }
-  static Future<NewsResponse> getNewsBySearch(String sourceId  , int pageNum , String searchKeyword)async{
+  static Future<NewsResponse> getNewsBySearch( int pageNum , String searchKeyword)async{
     Uri url = Uri.https(ApiConstants.baseUrl , EndPoints.newsApi , {
       "apiKey" : ApiConstants.apiKey ,
-      "sources" : sourceId ,
+      // "sources" : sourceId ,
       "pageSize" : '10' ,
       "page" : '$pageNum' ,
       "q" : searchKeyword ,

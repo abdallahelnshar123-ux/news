@@ -29,7 +29,6 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
           return MainLoadingWidget();
         }
         if (snapshot.hasError) {
-          // todo :
           return MainErrorWidget(
             onPressed: () {
               ApiManager.getAllSources();
