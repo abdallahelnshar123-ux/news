@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:news/provider/app_theme_provider.dart';
 import 'package:news/utils/app_colors.dart';
 
-import '../api/api_manager.dart';
-import '../utils/app_styles.dart';
 import '../utils/screen_size.dart';
 
 class MainErrorWidget extends StatelessWidget {
@@ -23,7 +21,7 @@ class MainErrorWidget extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.only(top: context.height * 0.35),
       child: Column(
-        spacing: context.height *0.01,
+        spacing: context.height * 0.01,
         children: [
           Text(errorMessage, style: Theme.of(context).textTheme.titleMedium),
 
@@ -34,7 +32,10 @@ class MainErrorWidget extends StatelessWidget {
                   : AppColors.whiteColor,
             ),
             onPressed: onPressed,
-            child: Text('try again', style: AppStyles.bold16white),
+            child: Text(
+              'try again',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
           ),
         ],
       ),

@@ -22,6 +22,7 @@
   "web_viewer": "Web Viewer",
   "no_news_from_this_source": "No News From This Source",
   "next_page": "Next Page",
-  "previous_page": "Previous Page"
+  "previous_page": "Previous Page",
+  "no_news_sources_found": "No news sources found"
 
 }

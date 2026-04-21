@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news/home_screen/home_screen.dart';
 import 'package:news/provider/app_theme_provider.dart';
+import 'package:news/provider/source_provider.dart';
 import 'package:news/utils/app_routes.dart';
 import 'package:news/utils/app_theme.dart';
 import 'package:news/utils/shared_prefs.dart';
@@ -23,6 +24,7 @@ void main() async {
             appTheme: appTheme == 1 ? ThemeMode.dark : ThemeMode.light,
           ),
         ),
+        ChangeNotifierProvider(create: (context) => SourceProvider()),
       ],
       child: EasyLocalization(
         supportedLocales: [Locale('en'), Locale('ar')],
@@ -38,7 +40,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     var themeProviderObject = Provider.of<AppThemeProvider>(context);
@@ -49,7 +50,6 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.homeRouteName: (context) => HomeScreen(),
         AppRoutes.webviewRouteName: (context) => WebViewScreen(),
-
       },
       theme: AppTheme.lightTheme,
       themeMode: themeProviderObject.appTheme,
@@ -57,7 +57,6 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-
     );
   }
 }

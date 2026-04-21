@@ -11,6 +11,9 @@ import 'package:news/provider/app_theme_provider.dart';
 import 'package:news/utils/app_assets.dart';
 import 'package:news/utils/app_colors.dart';
 import 'package:news/utils/screen_size.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/source_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -101,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onCategoryItemClick(Category newSelectedCategory) {
     selectedCategory = newSelectedCategory;
+    context.read<SourceProvider>().changeIndex(0);
     setState(() {});
   }
 
