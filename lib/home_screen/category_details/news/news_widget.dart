@@ -15,7 +15,6 @@ class NewsWidget extends StatefulWidget {
   const NewsWidget({super.key, required this.source});
 
   final Source source;
-
   @override
   State<NewsWidget> createState() => _NewsWidgetState();
 }
@@ -31,6 +30,7 @@ class _NewsWidgetState extends State<NewsWidget> {
   void initState() {
     scrollController.addListener(onScroll);
     super.initState();
+    if (newsList.isNotEmpty) return;
     loadNews();
   }
 
@@ -132,9 +132,4 @@ class _NewsWidgetState extends State<NewsWidget> {
 
     setState(() => isLoading = false);
   }
-
-  // void loadMoreItems() {
-  //   if (isLoading) return;
-  //   loadNews(); // 👈 بدل delay
-  // }
 }

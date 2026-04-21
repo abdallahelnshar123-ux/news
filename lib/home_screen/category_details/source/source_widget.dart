@@ -8,13 +8,12 @@ import '../news/news_widget.dart';
 
 class SourceWidget extends StatelessWidget {
   final List<Source> sourcesList;
-  int selectedIndex = context.watch<SourceProvider>().selectedIndex;
 
   const SourceWidget({super.key, required this.sourcesList});
 
   @override
   Widget build(BuildContext context) {
-
+    int selectedIndex = context.watch<SourceProvider>().selectedIndex;
 
     return DefaultTabController(
       length: sourcesList.length,

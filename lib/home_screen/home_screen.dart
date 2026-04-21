@@ -8,11 +8,12 @@ import 'package:news/home_screen/drawer/home_drawer.dart';
 import 'package:news/home_screen/search_result_widget/search_result_widget.dart';
 import 'package:news/model/category.dart';
 import 'package:news/provider/app_theme_provider.dart';
-import 'package:news/provider/source_provider.dart';
 import 'package:news/utils/app_assets.dart';
 import 'package:news/utils/app_colors.dart';
 import 'package:news/utils/screen_size.dart';
 import 'package:provider/provider.dart';
+
+import '../provider/source_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<SourceProvider>().changeIndex(0);
     categoryList = Category.getCategoryList(context);
     return Scaffold(
       drawer: search
@@ -104,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onCategoryItemClick(Category newSelectedCategory) {
     selectedCategory = newSelectedCategory;
+    context.read<SourceProvider>().changeIndex(0);
     setState(() {});
   }
 
