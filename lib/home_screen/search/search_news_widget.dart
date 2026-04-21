@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:news/api/api_manager.dart';
 import 'package:news/home_screen/category_details/news/bottom_sheet_news_widget.dart';
 import 'package:news/model/news_response.dart';
-import 'package:news/model/source_response.dart';
 import 'package:news/utils/screen_size.dart';
 
 import '../../../global_widgets/main_loading_widget.dart';
@@ -14,7 +13,6 @@ import '../category_details/news/news_item.dart';
 class SearchResultNews extends StatefulWidget {
   const SearchResultNews({super.key, required this.searchKeyWord });
 
-  // final Source source;
   final String searchKeyWord;
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news/home_screen/search/search_news_widget.dart';
-
 
 import '../../provider/app_theme_provider.dart';
 import '../../utils/app_Colors.dart';
@@ -11,15 +11,15 @@ class NewsSearchDelegate extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
-      IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(
-          Icons.close,
-          color: context.isLight ? AppColors.blackColor : AppColors.whiteColor,
-        ),
-      ),
+      // IconButton(
+      //   onPressed: () {
+      //     Navigator.pop(context);
+      //   },
+      //   icon: Icon(
+      //     Icons.close,
+      //     color: context.isLight ? AppColors.blackColor : AppColors.whiteColor,
+      //   ),
+      // ),
     ];
   }
 
@@ -40,8 +40,7 @@ class NewsSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return  SearchResultNews(searchKeyWord: query);
-
+    return SearchResultNews(searchKeyWord: query);
 
     //   FutureBuilder<SourceResponse>(
     //   future: ApiManager.getAllSources(),
@@ -77,4 +76,82 @@ class NewsSearchDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     return Container();
   }
+
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return Theme.of(context).copyWith(
+      scaffoldBackgroundColor:
+      context.isLight ? AppColors.whiteColor : AppColors.blackColor,
+
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      ),
+
+      inputDecorationTheme: InputDecorationTheme(
+
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+
+        filled: true,
+        fillColor:
+        context.isLight ? AppColors.whiteColor : AppColors.blackColor,
+
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: context.isLight
+                ? AppColors.blackColor
+                : AppColors.whiteColor,
+            width: 2,
+          ),
+        ),
+
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: context.isLight
+                ? AppColors.blackColor
+                : AppColors.whiteColor,
+            width: 2,
+          ),
+        ),
+
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: context.isLight
+                ? AppColors.blackColor
+                : AppColors.whiteColor,
+            width: 2,
+          ),
+        ),
+      ),
+    );
+  }
+
+  // @override
+  // ThemeData appBarTheme(BuildContext context) {
+  //   return Theme.of(context).copyWith(
+  //    inputDecorationTheme: InputDecorationTheme(
+  //
+  //    ),
+  //     appBarTheme: AppBarThemeData(
+  //
+  //       backgroundColor: context.isLight
+  //           ? AppColors.whiteColor
+  //           : AppColors.blackColor,
+  //       // shape: RoundedRectangleBorder(
+  //       //   borderRadius: BorderRadius.circular(16),
+  //       //   side: BorderSide(
+  //       //     width: 2,
+  //       //     color: context.isLight
+  //       //         ? AppColors.blackColor
+  //       //         : AppColors.whiteColor,
+  //       //   ),
+  //       // ),
+  //     ),
+  //   );
+  // }
 }
