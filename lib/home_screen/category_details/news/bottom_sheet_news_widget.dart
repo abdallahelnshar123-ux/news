@@ -34,7 +34,6 @@ class BottomSheetNewsWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ClipRRect(
-
                 borderRadius: BorderRadius.circular(8),
                 child: CachedNetworkImage(
                   imageUrl: selectedNews.urlToImage ?? '',

@@ -21,7 +21,10 @@ class NewsItem extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: context.isLight ?AppColors.blackColor: AppColors.whiteColor, width: 1),
+        border: Border.all(
+          color: context.isLight ? AppColors.blackColor : AppColors.whiteColor,
+          width: 1,
+        ),
       ),
       child: Column(
         spacing: context.height * 0.02,
@@ -64,10 +67,6 @@ class NewsItem extends StatelessWidget {
     DateTime parsedDate = DateTime.parse(
       news.publishedAt ?? '${DateTime.now()}',
     );
-    // DateTime dateDiff = DateTime.now().subtract(
-    //   Duration(milliseconds: parsedDate.millisecondsSinceEpoch),
-    // );
-    return timeago.format(parsedDate ,locale:  context.locale.countryCode );
-    // timeago.format(DateTime.now().subtract(Duration(milliseconds: DateTime.parse(news.publishedAt ?? '${DateTime.now()}').millisecondsSinceEpoch))
+    return timeago.format(parsedDate, locale: context.locale.countryCode);
   }
 }

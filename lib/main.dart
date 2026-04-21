@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news/home_screen/home_screen.dart';
+import 'package:news/home_screen/search/search_screen.dart';
 import 'package:news/provider/app_theme_provider.dart';
 import 'package:news/provider/source_provider.dart';
 import 'package:news/utils/app_routes.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.homeRouteName: (context) => HomeScreen(),
         AppRoutes.webviewRouteName: (context) => WebViewScreen(),
+        AppRoutes.searchRouteName: (context) => SearchScreen(),
       },
       theme: AppTheme.lightTheme,
       themeMode: themeProviderObject.appTheme,

@@ -5,6 +5,7 @@ class AppThemeProvider extends ChangeNotifier {
   ThemeMode appTheme;
 
   AppThemeProvider({required this.appTheme});
+
   void changeAppTheme(ThemeMode newTheme) {
     if (appTheme == newTheme) return;
 

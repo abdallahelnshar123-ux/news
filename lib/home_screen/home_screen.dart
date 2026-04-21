@@ -4,11 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news/home_screen/categories_widget/categories_widget.dart';
 import 'package:news/home_screen/category_details/category_details.dart';
 import 'package:news/home_screen/drawer/home_drawer.dart';
-import 'package:news/home_screen/search/news_search_delegate.dart';
 import 'package:news/model/category.dart';
 import 'package:news/provider/app_theme_provider.dart';
 import 'package:news/utils/app_assets.dart';
 import 'package:news/utils/app_colors.dart';
+import 'package:news/utils/app_routes.dart';
 import 'package:news/utils/screen_size.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +24,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Category> categoryList = [];
 
-  // bool search = false;
   String keyWord = '';
 
   Category? selectedCategory;
@@ -38,53 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
         child: HomeDrawer(onTap: onGoHomeTap),
       ),
       appBar: AppBar(
-        // automaticallyImplyLeading: !search,
-        // automaticallyImplyActions: !search,
-        title:
-            // search
-            //     ? CustomTextField(
-            //         onChanged: (text) {
-            //           keyWord = text;
-            //           setState(() {});
-            //         },
-            //         dataStyle: Theme.of(context).textTheme.titleLarge,
-            //         errorBorderColor: Colors.red,
-            //         generalBorderColor: context.isLight
-            //             ? AppColors.blackColor
-            //             : AppColors.whiteColor,
-            //         prefixIcon: SvgPicture.asset(
-            //           fit: BoxFit.scaleDown,
-            //           AppAssets.searchIconDark,
-            //           colorFilter: ColorFilter.mode(
-            //             context.isLight
-            //                 ? AppColors.blackColor
-            //                 : AppColors.whiteColor,
-            //             BlendMode.srcIn,
-            //           ),
-            //         ),
-            //         suffixIcon: IconButton(
-            //           onPressed: () {
-            //             search = false;
-            //             setState(() {});
-            //           },
-            //           icon: Icon(
-            //             Icons.close,
-            //             color: context.isLight
-            //                 ? AppColors.blackColor
-            //                 : AppColors.whiteColor,
-            //           ),
-            //         ),
-            //       )
-            //     :
-            Text(
-              selectedCategory == null
-                  ? context.tr('home')
-                  : context.tr(selectedCategory!.id),
-            ),
+        title: Text(
+          selectedCategory == null
+              ? context.tr('home')
+              : context.tr(selectedCategory!.id),
+        ),
         actions: [
           IconButton(
             onPressed: () =>
-                showSearch(context: context, delegate: NewsSearchDelegate()),
+                Navigator.pushNamed(context, AppRoutes.searchRouteName),
             icon: SvgPicture.asset(
               context.isLight
                   ? AppAssets.searchIconLight
@@ -114,17 +75,4 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.pop(context);
     setState(() {});
   }
-
-  // Widget showBodyWidget() {
-  //   if (search) {
-  //     return SearchResultWidget(keyWord: keyWord);
-  //   }
-  //   if (selectedCategory == null) {
-  //     return CategoriesWidget(
-  //       categoryList: categoryList,
-  //       onCategoryItemClick: onCategoryItemClick,
-  //     );
-  //   }
-  //   return CategoryDetails(category: selectedCategory!);
-  // }
 }
