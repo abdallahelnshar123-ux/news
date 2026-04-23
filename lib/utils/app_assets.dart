@@ -1,4 +1,6 @@
 class AppAssets {
+
+  /// images ================================================================
   static const String businessDarkImage = 'assets/images/business_dark.png';
   static const String businessLightImage = 'assets/images/business_light.png';
   static const String entertainmentDarkImage =
@@ -11,9 +13,17 @@ class AppAssets {
   static const String healthLightImage = 'assets/images/health_light.png';
   static const String scienceDarkImage = 'assets/images/science_dark.png';
   static const String scienceLightImage = 'assets/images/science_light.png';
-  static const String sportDarkImage = 'assets/images/sport_dark.png';
-  static const String sportLightImage = 'assets/images/sport_light.png';
+  static const String sportDarkImage = 'assets/images/sports_dark.png';
+  static const String sportLightImage = 'assets/images/sports_light.png';
   static const String technologyDarkImage = 'assets/images/technology_dark.png';
   static const String technologyLightImage =
       'assets/images/technology_light.png';
+
+  /// icons ==================================================================
+  static const String homeIcon = 'assets/icons/home_icon.svg';
+  static const String themeIcon = 'assets/icons/theme_icon.svg';
+  static const String languageIcon = 'assets/icons/language_icon.svg';
+  static const String searchIconDark = 'assets/icons/search_icon_dark.svg';
+  static const String searchIconLight = 'assets/icons/search_icon_light.svg';
+
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:news/utils/App_Colors.dart';
+import 'package:news/utils/app_colors.dart';
 
 class AppStyles {
   static TextStyle medium20white = GoogleFonts.inter(
@@ -49,9 +49,19 @@ class AppStyles {
       fontWeight: FontWeight.w700 ,
       fontSize: 16
   );
+  static TextStyle medium16white = GoogleFonts.inter(
+      color: AppColors.whiteColor,
+      fontWeight: FontWeight.w500 ,
+      fontSize: 16
+  );
   static TextStyle bold16black = GoogleFonts.inter(
       color: AppColors.blackColor,
       fontWeight: FontWeight.w700 ,
+      fontSize: 16
+  );
+  static TextStyle medium16black = GoogleFonts.inter(
+      color: AppColors.blackColor,
+      fontWeight: FontWeight.w500 ,
       fontSize: 16
   );
   static TextStyle medium14white = GoogleFonts.inter(
